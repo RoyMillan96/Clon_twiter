@@ -32,7 +32,7 @@ npx eslint . --fix ó npm run lint
  npm run
  npm run dev
 
- # si llega a falla el proyecto se soluciona haciendo un 
+ # si llega a fallar el proyecto se soluciona haciendo un 
  npm run  build 
 
  # eso corrije errores y crea el .next en caso de que no exista
