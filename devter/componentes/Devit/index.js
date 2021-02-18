@@ -1,16 +1,20 @@
 import Avatar from "componentes/Avatar"
 import styles from "./styles.module.css"
 
-export default function Devit({ avatar, username, message, id }) {
+export default function Devit({ avatar, userName, content, id, createdAt }) {
     return (
         <>
             <article className={styles.article}>
                 <div className={styles.div}>
-                    <Avatar alt={username} src={avatar} />
+                    <Avatar alt={userName} src={avatar} />
                 </div>
                 <section>
-                    <strong>{username}</strong>
-                    <p className={styles.p}>{message}</p>
+                    <header>
+                        <strong>{userName}</strong>
+                        <span className={styles.span}>·</span>
+                        <date className={styles.date}>{createdAt}</date>
+                    </header>
+                    <p className={styles.p}>{content}</p>
                 </section>
             </article>
         </>
