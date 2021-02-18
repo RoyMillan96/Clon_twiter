@@ -1,0 +1,6 @@
+//  Sirve para quitar en el dir el "../" 
+{
+    "compilerOptions": {
+        "baseUrl": "."
+    }
+}

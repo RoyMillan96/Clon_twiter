@@ -1,2 +1,2 @@
-# Clon_twiter
-this is a project create in REACT, is a twittwer clone
+# REACT_JS
+Proyecto hecho con el framework de NEXT.JS y REACT.JS que simula ser un clon de twiter
