@@ -1,16 +1,17 @@
-import Layouts from "componentes/Layouts"
-import styles from "./styles.module.css"
 import { useEffect, useState } from "react"
+import { fetchLatestDevits } from "firebase/client"
+import styles from "./styles.module.css"
+import Layouts from "componentes/Layouts"
 import Devit from "componentes/Devit"
+import useUser from "hooks/useUser"
 
 export default function HomePage() {
     const [timeline, setTimeline] = useState([])
+    const user = useUser()
 
     useEffect(() => {
-        fetch("/api/statuses/home_timeline")
-            .then((res) => res.json())
-            .then(setTimeline)
-    }, [])
+        user && fetchLatestDevits().then(setTimeline)
+    }, [user])
 
     return (
         <>
@@ -19,13 +20,15 @@ export default function HomePage() {
                     <h2 className={styles.h2}>Inicio</h2>
                 </header>
                 <section className={styles.section}>
-                    {timeline.map(({ id, username, avatar, message }) => (
+                    {timeline.map(({ id, userName, avatar, content, userId, createdAt }) => (
                         <Devit
                             avatar={avatar}
+                            createdAt={createdAt}
                             id={id}
                             key={id}
-                            message={message}
-                            username={username}
+                            content={content}
+                            userName={userName}
+                            userId={userId}
                         />
                     ))}
                 </section>
