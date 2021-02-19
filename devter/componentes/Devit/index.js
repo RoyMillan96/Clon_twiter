@@ -17,7 +17,7 @@ export default function Devit({ avatar, userName, content, id, createdAt, img })
                     <header>
                         <strong>{userName}</strong>
                         <span className={styles.span}>·</span>
-                        <date className={styles.date}>{timeago}</date>
+                        <time className={styles.date}>{timeago}</time>
                     </header>
                     <p className={styles.p}>{content}</p>
                     {img && <img className={styles.img} src={img} />}
