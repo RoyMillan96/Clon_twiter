@@ -37,4 +37,4 @@ yarn-error.log*
 .eslintcache
 
 # keys para firebase-admin
-./firebase-keys.json
+firebase/firebase-keys.json
