@@ -7,7 +7,6 @@ const DATE_UNITS = [
     ["second", 1],
 ]
 
-// Saca la diferencia entre el tiempo que ha pasado con la fecha actual y la del registro de firestore
 const getDateDiffs = (timestamp) => {
     const now = Date.now()
     const elapsed = (timestamp - now) / 1000
@@ -32,7 +31,6 @@ export default function useTimeAgo(timestamp) {
         return () => clearInterval(interval)
     }, [timestamp])
 
-    // api del navegador
     const rtf = new Intl.RelativeTimeFormat("es", { style: "short" })
 
     const { value, unit } = timeago
