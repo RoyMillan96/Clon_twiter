@@ -3,7 +3,7 @@ import Head from "next/head"
 
 import Button from "componentes/Button"
 import GitHub from "componentes/Icons/GitHub"
-// import Logo from "componentes/Icons/Logo"
+import Logo from "componentes/Icons/Logo"
 
 import { colors } from "styles/theme"
 
@@ -34,7 +34,7 @@ export default function Home() {
       </Head>
 
       <section>
-
+        <Logo width="100" />
         <h1>Devter</h1>
         <h2>
           Talk about development
