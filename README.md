@@ -49,3 +49,6 @@ npx prettier . --check
 
 #corregir errores con prettier
 npx prettier . --write
+
+# agregar firebase admin
+yarn add firebase-admin
