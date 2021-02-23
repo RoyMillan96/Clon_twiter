@@ -56,26 +56,40 @@ export const addDevit = ({ avatar, content, img, userId, userName }) => {
   })
 }
 
-// Lista de devits en la bd de firebase
-export const fetchLatestDevits = () => {
+const mapDevitFromFirebaseToDevitObject = (doc) => {
+  const data = doc.data()
+  const id = doc.id
+  const { createdAt } = data
+
+  return {
+    ...data,
+    id,
+    createdAt: +createdAt.toDate(),
+  }
+}
+
+// lista de acuerdo a los cambios en la bd de firestore
+export const listenLatestDevits = (callback) => {
   return db
     .collection("devits")
     .orderBy("createdAt", "desc")
-    .get()
-    .then(({ docs }) => {
-      return docs.map((doc) => {
-        const data = doc.data()
-        const id = doc.id
-        const { createdAt } = data
-
-        return {
-          ...data,
-          id,
-          createdAt: +createdAt.toDate(),
-        }
-      })
+    .limit(20)
+    .onSnapshot(({ docs }) => {
+      const newDevits = docs.map(mapDevitFromFirebaseToDevitObject)
+      callback(newDevits)
     })
 }
+
+// Lista de devits en la bd de firebase una sola vez
+// export const fetchLatestDevits = () => {
+//   return db
+//     .collection("devits")
+//     .orderBy("createdAt", "desc")
+//     .get()
+//     .then(({ docs }) => {
+//       return docs.map(mapDevitFromFirebaseToDevitObject)
+//     })
+// }
 
 // guardar una imagen en firestorage
 export const uploadImage = (file) => {
